@@ -1,0 +1,17 @@
+<div>
+  <p>
+    Description: {{details.description._content}}
+  </p>
+  <p>
+    Date Taken: {{ details.dates.taken | date }}
+  </p>
+  <p>
+    Date of Upload: {{ (details.dateuploaded*1000) | date }}
+  </p>
+  <p>
+    License: {{ licenses[details.license].name }}
+  </p>
+  <p>
+    Owner Name: {{ details.owner.realname }}
+  </p>
+</div>

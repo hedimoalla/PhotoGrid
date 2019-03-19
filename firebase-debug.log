@@ -1,0 +1,33 @@
+[debug] [2019-03-19T23:49:31.282Z] ----------------------------------------------------------------------
+[debug] [2019-03-19T23:49:31.285Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\hedim\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve --only functions,hosting
+[debug] [2019-03-19T23:49:31.286Z] CLI Version:   6.5.0
+[debug] [2019-03-19T23:49:31.286Z] Platform:      win32
+[debug] [2019-03-19T23:49:31.286Z] Node Version:  v10.15.1
+[debug] [2019-03-19T23:49:31.287Z] Time:          Tue Mar 19 2019 16:49:31 GMT-0700 (Pacific Daylight Time)
+[debug] [2019-03-19T23:49:31.287Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-03-19T23:49:31.298Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-03-19T23:49:31.298Z] > authorizing via signed-in user
+[debug] [2019-03-19T23:49:31.299Z] [iam] checking project photgrid-681ed for permissions ["firebase.projects.get"]
+[debug] [2019-03-19T23:49:31.301Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/photgrid-681ed:testIamPermissions  
+
+[debug] [2019-03-19T23:49:31.490Z] <<< HTTP RESPONSE 200
+[debug] [2019-03-19T23:49:31.492Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/photgrid-681ed  
+ 
+[debug] [2019-03-19T23:49:31.750Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\hedim\Desktop\Angular\PhotoGrid'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2019-03-19T23:49:32.742Z] Fetching environment
+[debug] [2019-03-19T23:49:32.749Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/108610089618:getServerAppConfig  
+ 
+[debug] [2019-03-19T23:49:32.749Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/108610089618/clients/_:getWebAppConfig  
+ 
+[debug] [2019-03-19T23:49:32.927Z] <<< HTTP RESPONSE 200
+[debug] [2019-03-19T23:49:32.927Z] Starting @google-cloud/functions-emulator
+[debug] [2019-03-19T23:49:32.962Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: dist
+[info] +  hosting: Local server: http://localhost:5000
+[debug] [2019-03-19T23:49:34.982Z] Parsing function triggers
+[info] +  functions: app: http://localhost:5001/photgrid-681ed/us-central1/app
