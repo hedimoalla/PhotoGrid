@@ -4,29 +4,25 @@ const app = express();
 const cors = require("cors");
 const port = 3000;
 const Flickr = require("flickr-sdk");
-const firebase = require("firebase-admin");
+const admin = require("firebase-admin");
 const serviceAccount = require("./serviceAccountKey.json");
 const FLICKR_API_KEY = "ef428994db11236b700e784f548e0f09";
 
+/* express setup */
+app.use(cors({ origin: true }));
+
 /* firebase setup */
-firebase.initializeApp({
-  credential: firebase.credential.cert(serviceAccount),
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://photgrid-681ed.firebaseio.com",
 });
-let db = firebase.database();
-// let r2 = db.ref("photo/0");
-// r2.once('value', (snapshot) => {
-//   console.log(snapshot.val());
-// });
+let db = admin.database();
 
 /* flicker setup */
 let flickr = new Flickr(FLICKR_API_KEY);
 
-/* express setup */
-app.use(cors());
-
 /* /getItem/:id */
-app.get("/getItem/:id", (req, res) => {
+app.get("/getItem/:id/", (req, res) => {
   let id = req.params.id;
   // setup up the express response promise
   let response = new Promise((resolve, reject) => {
@@ -36,9 +32,8 @@ app.get("/getItem/:id", (req, res) => {
     ref.once("value", (snapshot) => {
       let val = snapshot.val();
       if (val) {
-        // ezpz, it existed in the cache:
-        // tslint:disable-next-line: no-console
-        console.log("retrieving cached photo " + id);
+        // it existed in the cache:
+        // console.log("retrieving cached photo " + id);
         resolve(val);
       } else {
         // no cache, make a raw flickr request
@@ -52,8 +47,7 @@ app.get("/getItem/:id", (req, res) => {
               // the image exists, store in firebase for future use
               let info = JSON.parse(image.text).photo;
               db.ref("photo/" + id).set(info);
-              // tslint:disable-next-line: no-console
-              console.log("retrieving flickr photo " + id);
+              // console.log("retrieving flickr photo " + id);
               resolve(info);
             }
           });
@@ -64,17 +58,7 @@ app.get("/getItem/:id", (req, res) => {
     res.json(item);
   });
   return response;
-  res.json({
-    description: "aaa",
-    license: "0",
-  });
 });
-
-//if (req.params.id already exists in some cache)
-//serve out that cache
-//else
-//make a new request flicker
-// });
 
 app.get("/galleries/:galleryId/:pageNumber?", (req, res) => {
   let id = req.params.galleryId;
@@ -85,8 +69,6 @@ app.get("/galleries/:galleryId/:pageNumber?", (req, res) => {
     per_page: 9,
   };
   return flickr.galleries.getPhotos(obj).then((result) => {
-    // tslint:disable-next-line: no-console
-    // console.log(result);
     res.json(result.body);
   },
     (error) => {

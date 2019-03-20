@@ -1,17 +1,32 @@
 <div>
-  <p>
-    Description: {{details.description._content}}
-  </p>
-  <p>
-    Date Taken: {{ details.dates.taken | date }}
-  </p>
-  <p>
-    Date of Upload: {{ (details.dateuploaded*1000) | date }}
-  </p>
-  <p>
-    License: {{ licenses[details.license].name }}
-  </p>
-  <p>
-    Owner Name: {{ details.owner.realname }}
-  </p>
+  <div class="modal-header">
+    <h5 class="modal-title">Description:</h5>
+  </div>
+  <div class="modal-body">
+    <p>{{ details.description._content }}</p>
+  </div>
+  <div class="modal-header">
+    <h5 class="modal-title">Date Taken:</h5>
+  </div>
+  <div class="modal-body">
+    <p>{{ details.dates.taken | date }}</p>
+  </div>
+  <div class="modal-header">
+    <h5 class="modal-title">Date of Upload:</h5>
+  </div>
+  <div class="modal-body">
+    <p>{{ (details.dateuploaded*1000) | date }}</p>
+  </div>
+  <div class="modal-header">
+    <h5 class="modal-title">License:</h5>
+  </div>
+  <div class="modal-body">
+    <p>{{ licenses[details.license].name }}</p>
+  </div>
+  <div class="modal-header">
+    <h5 class="modal-title">Owner Name:</h5>
+  </div>
+  <div class="modal-body">
+    <p>{{ details.owner.realname }}</p>
+  </div>
 </div>

@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PhotoDetailsComponent } from './photo-details/photo-details.component';
 
 @Component({
@@ -37,13 +37,13 @@ export class AppComponent {
 
   // https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
   getPhotoUrl(photo) {
-    return 'http://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' +
+    return 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' +
       photo.id + '_' + photo.secret + '.jpg';
   }
   getPhotos() {
-    this.http.get(environment.apiMiddleware + '/' + this.endpoint + '/' + this.galleryId + '/' + this.page)
+    this.http.get(environment.baseUrl + '/' + this.endpoint + '/' + this.galleryId + '/' + this.page)
       .subscribe((res) => {
-        console.log(res);
+        // console.log(res);
         this.details = res;
       });
   }
@@ -55,6 +55,7 @@ export class AppComponent {
       });
   }
   getDetails(id) {
-    return this.http.get(environment.apiMiddleware + '/getItem/' + id + '/');
+    return this.http.get(environment.baseUrl + '/getItem/' + id);
   }
+
 }

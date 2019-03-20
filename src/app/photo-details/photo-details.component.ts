@@ -1,7 +1,7 @@
+import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit, Input } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import * as moment from 'moment';
 import * as licenses from '../licenses.json';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-photo-details',
@@ -12,17 +12,13 @@ export class PhotoDetailsComponent implements OnInit {
   @Input() details: any = {};
   licenses = {};
 
-  constructor(private activeModal: NgbActiveModal) {
-    // tslint:disable-next-line: no-unused-expression
-    // this.details.description._content;
-
-    licenses.forEach((license, index) => {
+  constructor() {
+    licenses.forEach((license) => {
       this.licenses[license.id] = license;
     });
   }
 
   ngOnInit() {
-    console.log(this.details);
   }
 
 }
