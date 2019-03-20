@@ -6,7 +6,7 @@ const port = 3000;
 const Flickr = require("flickr-sdk");
 const admin = require("firebase-admin");
 const serviceAccount = require("./serviceAccountKey.json");
-const FLICKR_API_KEY = "ef428994db11236b700e784f548e0f09";
+const FLICKR_API_KEY = "INSERT YOUR FLICKR API KEY HERE";
 
 /* express setup */
 app.use(cors({ origin: true }));
