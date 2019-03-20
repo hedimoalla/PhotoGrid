@@ -37,15 +37,9 @@
         <div class="row">
           <div class="col-md-4" *ngFor="let photo of details.photos.photo; let i = index;">
             <div class="card mb-4 shadow-sm">
-              <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{ getPhotoUrl(photo) }}" />
-              <div class="card-body">
-                <div class="d-flex justify-content-center">
-                  <div class="btn-group">
-                    <button type="button" (click)="getInfo(photo)"
-                      class="btn btn-sm btn-outline-secondary">Info</button>
-                  </div>
-                </div>
-              </div>
+              <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{ getPhotoUrl(photo) }}"
+                (click)="getInfo(photo)" />
+
             </div>
           </div>
         </div>
